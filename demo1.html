@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3 id='mydiv'>点击按钮，这里就变字</h3>
+		</div>
+		<input type="button" onclick="loadXMLDoc()" value="点击变字">
+	</div>
+	<script type="text/javascript">
+		function loadXMLDoc(){
+			var xmlhttp;
+				xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						document.getElementById("mydiv").innerHTML = xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET","test.txt",true);
+				xmlhttp.send();
+			}
+	</script>
+</body>
+</html>

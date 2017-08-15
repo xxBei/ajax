@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax--get方法</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3 id='mydiv'>点击按钮，这里就变字</h3>
+		</div>
+		<input type="button" onclick="loadXMLDoc()" value="点击变字">
+	</div>
+	<script type="text/javascript">
+		function loadXMLDoc(){//get方法
+			var xmlhttp;
+			xmlhttp = new XMLHttpRequest();//创建一个对象，用于在后台与服务器交换数据
+			xmlhttp.onreadystatechange = function(){//状态发生变化时，函数被回调
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("mydiv").innerHTML = xmlhttp.responseText;
+				}
+			}
+			//Math.floor(Math.random()*10)会产生一个1到9的数字
+			xmlhttp.open("GET","get.php?rdm="+Math.floor(Math.random()*10),true);
+			xmlhttp.send();
+			}
+	</script>
+</body>
+</html>

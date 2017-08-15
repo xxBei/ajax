@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>get请求</title>
+</head>
+<body>
+	<h3 id="text">点击按钮改变文字</h3>
+	<input type="button" value="按钮" onclick="loadXMLDoc()">
+	
+	<script type="text/javascript">
+		function loadXMLDoc(){//点击后调用的函数
+			var xmlhttp = new XMLHttpRequest();//创建一个对象，用于在后台与服务器交换数据
+			xmlhttp.onreadystatechange = function(){//状态发生变化时，函数被回调
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById("text").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("POST","test.txt",true);
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>post方法</title>
+</head>
+<body>
+	<div id="box">
+		<div>
+			<h3 id="test">点击按钮变字</h3>
+		</div>
+		<input type="button" value="点击变字" onclick="loadXMLDoc()" />
+	</div>
+	
+	<script type="text/javascript">
+		function loadXMLDoc(){
+			var xmlhttp;
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById('test').innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("POST","post.php",true);
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>

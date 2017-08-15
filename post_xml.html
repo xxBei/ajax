@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax--response</title>
+</head>
+<body>
+	<div id="box">
+		<div>
+			<h3 id="xmlTest">点击获取XML信息</h3>
+		</div>
+		<input type="button" value="点击变字" onclick="loadXMLDoc()">
+	</div>
+	<script type="text/javascript">
+		function loadXMLDoc(){
+			var xmlhttp;
+			var txt,x;
+			xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc = xmlhttp.responseXML;
+					txt = "";
+					x = xmlDoc.getElementsByTagName("TITLE");
+					for(var i=0;i<x.length;i++){
+						txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+					}
+					document.getElementById("xmlTest").innerHTML = txt;
+				}
+			}
+			xmlhttp.open("GET","test.xml",true);
+			xmlhttp.send();
+		}
+	</script>
+</body>
+</html>
